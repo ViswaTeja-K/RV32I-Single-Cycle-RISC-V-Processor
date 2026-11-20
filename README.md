@@ -64,21 +64,22 @@ The processor was verified using a self-checking Verilog testbench in Xilinx Viv
 ## Simulation Waveforms
 
 ### 1. Reset and Instruction Fetch
-Reset and instruction fetch.png
+![Reset and Instruction Fetch](Waveforms/Resetandinstructionfetch.png)
 
 ### 2. ALU Operations
-ALU.png
+![ALU Operations](Waveforms/ALU.png)
 
 ### 3. Load and Store
-load and store.png
+![Load and Store](Waveforms/loadandstore.png)
 
 ### 4. Branch Instructions
-Branch.png
+![Branch Instructions](Waveforms/Branch.png)
+
 ### 5. JAL and JALR
-JALR .png
+![JAL and JALR](Waveforms/JALR.png)
 
 ### 6. Verification Results
-test summary.png
+![Verification Results](Waveforms/testsummary.png)
 
 ## Tools and Technologies
 
