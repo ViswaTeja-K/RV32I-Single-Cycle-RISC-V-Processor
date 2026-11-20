@@ -64,7 +64,7 @@ The processor was verified using a self-checking Verilog testbench in Xilinx Viv
 ## Simulation Waveforms
 
 ### 1. Reset and Instruction Fetch
-![Reset and Instruction Fetch](Waveforms/Reset_and_instructionfetch.png)
+![Reset and Instruction Fetch](Waveforms/Reset_and_instruction_fetch.png)
 
 ### 2. ALU Operations
 ![ALU Operations](Waveforms/ALU.png)
