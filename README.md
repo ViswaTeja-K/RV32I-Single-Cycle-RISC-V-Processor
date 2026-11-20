@@ -2,15 +2,13 @@
 
 A 32-bit single-cycle RISC-V processor designed and implemented using **Verilog HDL**, following the RV32I base instruction set architecture.
 
-This project focuses on understanding processor architecture, RTL design, datapath implementation, control logic, and functional verification using a self-checking testbench.
+The project focuses on RTL design, processor datapath implementation, control logic, memory operations, and functional verification using a self-checking testbench.
 
 ## Project Overview
 
 The processor implements a single-cycle datapath in which each instruction completes its execution within one clock cycle.
 
-The design includes instruction fetching, instruction decoding, register operations, ALU execution, memory access, and write-back.
-
-**Project Status:** Single-cycle RTL design and simulation verification completed.
+**Project Status:** RTL design and simulation verification completed.
 
 ## Architecture
 
@@ -29,9 +27,7 @@ The processor consists of the following major components:
 
 ## Supported Instructions
 
-The processor supports the following RV32I instruction categories:
-
-| Instruction Type | Supported Instructions |
+| Category | Instructions |
 |---|---|
 | R-Type | ADD, SUB, AND, OR, XOR, SLL, SRL, SRA, SLT, SLTU |
 | I-Type | ADDI, ANDI, ORI, XORI, SLLI, SRLI, SRAI, SLTI, SLTIU |
@@ -45,66 +41,53 @@ The processor supports the following RV32I instruction categories:
 
 - 32-bit RISC-V architecture.
 - 32 general-purpose registers.
-- Register x0 is hardwired to zero.
-- Immediate generation for I, S, B, U, and J instruction formats.
+- Register x0 hardwired to zero.
+- Immediate generation for I, S, B, U, and J formats.
 - Arithmetic and logical operations.
 - Signed and unsigned comparisons.
 - Byte, halfword, and word memory operations.
 - Sign extension and zero extension for load instructions.
 - Conditional branching and jump operations.
-- JAL and JALR return address handling.
 
-## Verification and Testing
+## Verification
 
-The processor was verified using a **self-checking Verilog testbench**.
+The processor was verified using a self-checking Verilog testbench in Xilinx Vivado / XSim.
 
-The testbench checks:
-- ALU operations and immediate instructions.
-- Load and store operations.
-- Conditional branch instructions.
-- JAL and JALR operations.
-- Register x0 behaviour.
-- Expected memory and register values.
+| Metric | Result |
+|---|---:|
+| Total checks | 53 |
+| Passed | 53 |
+| Failed | 0 |
 
-### Simulation Results
+**Verification Status: ALL TESTS PASSED**
 
-**Total Test Cases: 53**
+## Simulation Waveforms
 
-**Passed: 53**
+### 1. Reset and Instruction Fetch
+![Reset and Instruction Fetch](Waveforms/01_Reset.png)
 
-**Failed: 0**
+### 2. ALU Operations
+![ALU Operations](Waveforms/02_ALU.png)
 
-**Result: ALL TESTS PASSED**
+### 3. Load and Store
+![Load and Store](Waveforms/03_Memory.png)
 
-### Simulation Waveforms
+### 4. Branch Instructions
+![Branch Instructions](Waveforms/04_Branch.png)
 
-The following waveforms demonstrate the processor's operation.
+### 5. JAL and JALR
+![JAL and JALR](Waveforms/05_Jumps.png)
 
-#### 1. Reset and Instruction Fetch
-![Reset and Instruction Fetch](Waveforms/01_Reset_Instruction_Fetch.png)
-
-#### 2. ALU Operations
-![ALU Operations](Waveforms/02_ALU_Operations.png)
-
-#### 3. Load and Store Operations
-![Load and Store](Waveforms/03_Load_Store.png)
-
-#### 4. Branch Instructions
-![Branch Instructions](Waveforms/04_Branch_Instructions.png)
-
-#### 5. JAL and JALR Instructions
-![Jump Instructions](Waveforms/05_JAL_JALR.png)
-
-#### 6. Verification Summary
-![Verification Summary](Waveforms/06_Test_Summary.png)
+### 6. Verification Results
+![Verification Results](Waveforms/06_Results.png)
 
 ## Tools and Technologies
 
-- **HDL:** Verilog
-- **Simulation:** Xilinx Vivado / XSim
-- **Design Approach:** RTL Design
-- **Architecture:** RISC-V RV32I
-- **Verification:** Self-checking Testbench
+- Verilog HDL
+- Xilinx Vivado
+- XSim Simulator
+- RTL Design
+- Self-checking Functional Verification
 
 ## Repository Structure
 
@@ -112,59 +95,29 @@ The following waveforms demonstrate the processor's operation.
 RV32I-Single-Cycle-Processor/
 │
 ├── RTL/
-│   ├── RISC_V.v
-│   ├── ALU.v
-│   ├── RegisterFile.v
-│   ├── InstructionMemory.v
-│   ├── DataMemory.v
-│   ├── MainDecoder.v
-│   ├── ALUDecoder.v
-│   ├── ImmGen.v
-│   ├── PC.v
-│   └── ...
-│
 ├── Simulation/
-│   ├── RISC_V_tb.v
-│   └── program.hex
-│
 ├── Verification/
-│   └── Self_Checking_Testbench.v
-│
 ├── Waveforms/
-│   ├── 01_Reset_Instruction_Fetch.png
-│   ├── 02_ALU_Operations.png
-│   ├── 03_Load_Store.png
-│   ├── 04_Branch_Instructions.png
-│   ├── 05_JAL_JALR.png
-│   └── 06_Test_Summary.png
-│
 ├── Documentation/
-│
+│   └── Project_Overview.md
 └── README.md
 ```
 
-*The file names and folder structure can be adjusted to match the actual uploaded files.*
-
-## How to Run the Simulation
+## How to Run
 
 1. Clone or download this repository.
 2. Open Xilinx Vivado.
-3. Create or open a Vivado project.
-4. Add the Verilog RTL files.
-5. Add the testbench as a simulation source.
-6. Ensure `program.hex` is available at the path expected by `$readmemh`.
-7. Run Behavioral Simulation.
-8. Execute the self-checking testbench and inspect the simulation results.
+3. Create a project and add the RTL source files.
+4. Add the self-checking testbench as a simulation source.
+5. Make sure `program.hex` is available at the path expected by `$readmemh`.
+6. Run Behavioral Simulation.
+7. Check the simulation results and waveforms.
 
 ## Future Improvements
 
-The current implementation is the first stage of a larger RISC-V processor development project.
-
-Planned improvements include:
-
-- Multi-cycle RISC-V processor implementation.
-- Five-stage pipelined RISC-V architecture.
-- Hazard detection and data forwarding.
+- Multi-cycle RISC-V processor.
+- Five-stage pipelined architecture.
+- Data forwarding and hazard detection.
 - UART, SPI, and I2C peripheral integration.
 - Wishbone bus interface.
 - Hardware accelerator integration.
@@ -172,14 +125,12 @@ Planned improvements include:
 
 ## Learning Outcomes
 
-Through this project, I gained practical experience in:
-
-- RISC-V ISA and processor architecture.
+- RISC-V instruction set architecture.
 - Verilog RTL design.
-- Datapath and control unit implementation.
-- ALU and memory design.
-- Functional verification using self-checking testbenches.
-- Simulation and waveform analysis using Vivado.
+- Processor datapath and control unit design.
+- ALU and memory implementation.
+- Self-checking testbench development.
+- Simulation and waveform analysis.
 
 ---
 
