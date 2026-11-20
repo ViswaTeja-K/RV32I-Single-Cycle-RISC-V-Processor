@@ -70,7 +70,7 @@ The processor was verified using a self-checking Verilog testbench in Xilinx Viv
 ![ALU Operations](Waveforms/ALU.png)
 
 ### 3. Load and Store
-![Load and Store](Waveforms/loadandstore.png)
+![Load and Store](Waveforms/load_and_store.png)
 
 ### 4. Branch Instructions
 ![Branch Instructions](Waveforms/Branch.png)
